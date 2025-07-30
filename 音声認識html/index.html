@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音声認識で音楽再生</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        #startButton {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        #startButton:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 1.1em;
+            color: #333;
+        }
+        audio {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <h1>音声認識で音楽を再生</h1>
+    <button id="startButton">音声認識を開始</button>
+    <p id="result">ここに認識結果が表示されます。</p>
+    <audio id="audioPlayer" controls></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

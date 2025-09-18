@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ポン出しマシン</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: sans-serif;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            margin-top: 30px;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 50px;
+        }
+        .sound-button {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            border-radius: 50%;
+            font-size: 24px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.1s;
+            background-color: #4CAF50;
+            color: white;
+        }
+        .sound-button:active {
+            transform: scale(0.9);
+        }
+        .stop-button {
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>ポン出しマシン</h1>
+    <div class="button-container">
+        <button class="sound-button" onclick="playSound('1')" id="btn1">1</button>
+        <button class="sound-button" onclick="playSound('2')" id="btn2">2</button>
+        <button class="sound-button" onclick="playSound('3')" id="btn3">3</button>
+        <button class="sound-button" onclick="playSound('4')" id="btn4">4</button>
+        <button class="sound-button" onclick="playSound('5')" id="btn5">5</button>
+        <button class="sound-button" onclick="playSound('6')" id="btn6">6</button>
+        <button class="sound-button" onclick="playSound('7')" id="btn7">7</button>
+        <button class="sound-button" onclick="playSound('8')" id="btn8">8</button>
+        <button class="sound-button stop-button" onclick="stopSound()" id="btnStop">STOP</button>
+    </div>
+
+    <audio id="audioPlayer" src=""></audio>
+
+    <script>
+        function playSound(num) {
+            const audio = document.getElementById('audioPlayer');
+            audio.src = `sounds/${num}.mp3`;
+            audio.play();
+        }
+
+        function stopSound() {
+            const audio = document.getElementById('audioPlayer');
+            audio.pause();
+            audio.currentTime = 0;
+        }
+
+        document.addEventListener('keydown', function(event) {
+            const key = event.key;
+            if (key >= '1' && key <= '8') {
+                document.getElementById('btn' + key).click();
+            } else if (key === '9') {
+                document.getElementById('btnStop').click();
+            }
+        });
+    </script>
+</body>
+</html>
